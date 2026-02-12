@@ -1,41 +1,42 @@
-<div class="container" style="max-width: 1000px; margin: auto; padding: 20px;">
+<div class="container" style="max-width: 1000px; margin: auto; padding: 20px; background-color: #202124; color: #e8eaed; min-height: 100vh;">
   
-  <h1 style="text-align: center;">To-Do List</h1>
+  <h1 style="text-align: center; color: #e8eaed;">To-Do List</h1>
 
-  <div style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; padding-top: 2px;">
-    <h3>Crear Tarea</h3>
-    <input [(ngModel)]="nuevaTarea.title" placeholder="Título" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px; height: 40px; box-sizing: border-box; font-family: sans-serif;">
-    <textarea [(ngModel)]="nuevaTarea.description" placeholder="Añade un comentario o descripción..." style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px; height: 80px; box-sizing: border-box; font-family: sans-serif; resize: none;"></textarea>
-    <button (click)="agregarTarea()" style="padding: 8px 10px; cursor: pointer;">Añadir</button>
+  <div style="background: #303134; padding: 15px; border-radius: 10px; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; padding-top: 2px; border: 1px solid #5f6368;">
+    <h3 style="color: #e8eaed;">Crear Tarea</h3>
+    <input [(ngModel)]="nuevaTarea.title" placeholder="Título" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #5f6368; border-radius: 5px; height: 40px; box-sizing: border-box; font-family: sans-serif; background-color: #202124; color: #e8eaed;">
+    <textarea [(ngModel)]="nuevaTarea.description" placeholder="Añade un comentario o descripción..." style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #5f6368; border-radius: 5px; height: 80px; box-sizing: border-box; font-family: sans-serif; resize: none; background-color: #202124; color: #e8eaed;"></textarea>
+    <button (click)="agregarTarea()" style="padding: 8px 10px; cursor: pointer; background-color: #8ab4f8; color: #202124; border: none; border-radius: 4px; font-weight: bold;">Añadir</button>
   </div>
 
   <div style="display: flex; gap: 50px; align-items: flex-start;">
 
     <div style="flex: 1;">
-      <h3>Por hacer ({{ tareasPendientes.length }})</h3>
+      <h3 style="color: #e8eaed;">Por hacer ({{ tareasPendientes.length }})</h3>
       
-      <div *ngFor="let t of tareasPendientes" class="task-card" style="border: 1px solid #eee; padding: 10px; margin-bottom: 5px; border-radius: 5px; display: flex; align-items: flex-start; gap: 10px;">
-        <input type="checkbox" (change)="toggleTarea(t)" style="margin-top: 5px;">
+      <div *ngFor="let t of tareasPendientes" class="task-card" style="border: 1px solid #5f6368; background-color: #303134; padding: 10px; margin-bottom: 5px; border-radius: 5px; display: flex; align-items: flex-start; gap: 10px;">
+        <input type="checkbox" (change)="toggleTarea(t)" style="margin-top: 5px; accent-color: #8ab4f8;">
         <div style="flex-grow: 1;">
-          <strong style="font-size: 1.1em;">{{ t.title }}</strong>
-          <p style="margin: 5px 0; color: #555; font-size: 0.9em;">{{ t.description }}</p>
-          <span style="font-size: 0.75em; color: #888;"> {{ calcularTiempo(t.created_at) }}</span>
+          <strong style="font-size: 1.1em; color: #e8eaed;">{{ t.title }}</strong>
+          <p style="margin: 5px 0; color: #bdc1c6; font-size: 0.9em;">{{ t.description }}</p>
+          <span style="font-size: 0.75em; color: #9aa0a6;"> {{ calcularTiempo(t.created_at) }}</span>
         </div>
-        <button (click)="borrarTarea(t.id)">Eliminar</button>
+        <button (click)="borrarTarea(t.id)" style="background: transparent; color: #f28b82; border: 1px solid #f28b82; border-radius: 4px; cursor: pointer;">Eliminar</button>
       </div>
     </div>
 
     <div style="flex: 1;">
-      <h3>Completadas ({{ tareasCompletadas.length }})</h3>
+      <h3 style="color: #e8eaed;">Completadas ({{ tareasCompletadas.length }})</h3>
       
-      <div *ngFor="let t of tareasCompletadas" style="opacity: 0.6; background: #bcc0b9; padding: 10px; margin-bottom: 5px; border: 1px solid #ddd; border-radius: 5px; display: flex; align-items: flex-start; gap: 10px;">
-        <input type="checkbox" checked (change)="toggleTarea(t)" style="margin-top: 5px;">
+      <div *ngFor="let t of tareasCompletadas" style="opacity: 0.6; background: #3c4043; padding: 10px; margin-bottom: 5px; border: 1px solid #5f6368; border-radius: 5px; display: flex; align-items: flex-start; gap: 10px;">
+        <input type="checkbox" checked (change)="toggleTarea(t)" style="margin-top: 5px; accent-color: #8ab4f8;">
         <div style="flex-grow: 1;">
-          <strong style="text-decoration: line-through;">{{ t.title }}</strong>
-          <p style="margin: 5px 0; font-size: 0.85em; font-style: italic;">{{ t.description }}</p>
+          <strong style="text-decoration: line-through; color: #9aa0a6;">{{ t.title }}</strong>
+          <p style="margin: 5px 0; font-size: 0.85em; font-style: italic; color: #80868b;">{{ t.description }}</p>
         </div>
-        <button (click)="borrarTarea(t.id)">Eliminar</button>
+        <button (click)="borrarTarea(t.id)" style="background: transparent; color: #f28b82; border: none; cursor: pointer;">Eliminar</button>
       </div>
     </div>
 
-  </div> </div>
+  </div> 
+</div>
