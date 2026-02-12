@@ -1,0 +1,8 @@
+.container { max-width: 800px; margin: 40px auto; font-family: 'Segoe UI', sans-serif; color: #333; }
+.card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 30px; }
+.task-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid #eee; transition: 0.3s; }
+.task-item:hover { background: #f9f9f9; }
+.time { font-size: 0.75rem; color: #888; display: block; }
+.btn-delete { color: #ff4d4d; border: none; background: none; cursor: pointer; font-weight: bold; }
+.completed { text-decoration: line-through; opacity: 0.6; }
+h2 { color: #2c3e50; border-left: 5px solid #3498db; padding-left: 10px; }

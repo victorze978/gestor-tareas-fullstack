@@ -1,0 +1,41 @@
+<div class="container" style="max-width: 1000px; margin: auto; padding: 20px;">
+  
+  <h1 style="text-align: center;">To-Do List</h1>
+
+  <div style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; padding-top: 2px;">
+    <h3>Crear Tarea</h3>
+    <input [(ngModel)]="nuevaTarea.title" placeholder="Título" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px; height: 40px; box-sizing: border-box; font-family: sans-serif;">
+    <textarea [(ngModel)]="nuevaTarea.description" placeholder="Añade un comentario o descripción..." style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px; height: 80px; box-sizing: border-box; font-family: sans-serif; resize: none;"></textarea>
+    <button (click)="agregarTarea()" style="padding: 8px 10px; cursor: pointer;">Añadir</button>
+  </div>
+
+  <div style="display: flex; gap: 50px; align-items: flex-start;">
+
+    <div style="flex: 1;">
+      <h3>Por hacer ({{ tareasPendientes.length }})</h3>
+      
+      <div *ngFor="let t of tareasPendientes" class="task-card" style="border: 1px solid #eee; padding: 10px; margin-bottom: 5px; border-radius: 5px; display: flex; align-items: flex-start; gap: 10px;">
+        <input type="checkbox" (change)="toggleTarea(t)" style="margin-top: 5px;">
+        <div style="flex-grow: 1;">
+          <strong style="font-size: 1.1em;">{{ t.title }}</strong>
+          <p style="margin: 5px 0; color: #555; font-size: 0.9em;">{{ t.description }}</p>
+          <span style="font-size: 0.75em; color: #888;"> {{ calcularTiempo(t.created_at) }}</span>
+        </div>
+        <button (click)="borrarTarea(t.id)">Eliminar</button>
+      </div>
+    </div>
+
+    <div style="flex: 1;">
+      <h3>Completadas ({{ tareasCompletadas.length }})</h3>
+      
+      <div *ngFor="let t of tareasCompletadas" style="opacity: 0.6; background: #bcc0b9; padding: 10px; margin-bottom: 5px; border: 1px solid #ddd; border-radius: 5px; display: flex; align-items: flex-start; gap: 10px;">
+        <input type="checkbox" checked (change)="toggleTarea(t)" style="margin-top: 5px;">
+        <div style="flex-grow: 1;">
+          <strong style="text-decoration: line-through;">{{ t.title }}</strong>
+          <p style="margin: 5px 0; font-size: 0.85em; font-style: italic;">{{ t.description }}</p>
+        </div>
+        <button (click)="borrarTarea(t.id)">Eliminar</button>
+      </div>
+    </div>
+
+  </div> </div>
