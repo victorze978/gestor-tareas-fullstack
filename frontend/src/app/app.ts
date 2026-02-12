@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core'; // <--- Esto quita el error de la imagen 4
-import { CommonModule } from '@angular/common'; // <--- Esto quita el error de la imagen 1 (*ngFor)
-import { FormsModule } from '@angular/forms';   // <--- Esto quita el error de la imagen 1 (ngModel)
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core'; 
+import { CommonModule } from '@angular/common'; 
+import { FormsModule } from '@angular/forms';   
 import { TodoService } from './services/todo'; 
 
 @Component({
@@ -11,12 +11,12 @@ import { TodoService } from './services/todo';
   styleUrls: ['./app.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  // --- DECLARACIONES DE PROPIEDADES (Esto quita los errores de la imagen 3) ---
+ 
   misTareas: any[] = [];
   nuevaTarea = { title: '', description: '' };
   intervalo: any;
 
-  // El 'private' en el constructor es VITAL para que las funciones reconozcan 'this.todoService'
+  
   constructor(
     private todoService: TodoService,
     private cdr: ChangeDetectorRef 
@@ -49,7 +49,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.todoService.getTasks().subscribe({
       next: (data) => {
         this.misTareas = data;
-        this.cdr.detectChanges(); // Fuerza el refresco visual inmediato
+        this.cdr.detectChanges(); // Forza el refresco visual inmediato
       }
     });
   }
